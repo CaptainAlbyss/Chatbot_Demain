@@ -8,8 +8,10 @@ var app = express()
 
 app.use(bodyParser.json())
 
-app.listen(3000,function(){
-    console.log('server escuchando en localhost:3000')
+var PORT = process.env.PORT || 3000;
+
+app.listen(PORT,function(){
+    console.log('server escuchando en localhost: ' + PORT)
 })
 
 app.get('/',function(req, res){
