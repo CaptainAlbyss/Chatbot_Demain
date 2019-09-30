@@ -8,16 +8,19 @@ var app = express()
 
 app.use(bodyParser.json())
 
+
+//Puertos
 var PORT = process.env.PORT || 3000;
 
 app.listen(PORT,function(){
     console.log('server escuchando en localhost: ' + PORT)
 })
 
+//Rutas get y post
 app.get('/',function(req, res){
     res.send('Abriendo el puerto desde PC local')
 })
-
+//ruta para verificar token de la webhook
 app.get('/webhook',function(req, res){
     if(req.query['hub.verify_token'] == 'Prueba_Demain'){
         res.send(req.query['hub.challenge'])
