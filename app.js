@@ -62,7 +62,7 @@ function evaluarMensaje(senderID, messageText){
     }
     if(isContain(messageText,'hola')){
         mensaje = 'Hola que gusto que estes aqui.'
-        sendMessageTemplate(senderID);
+        //sendMessageTemplate(senderID);
     }
     else if(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
