@@ -62,7 +62,7 @@ function evaluarMensaje(senderID, messageText){
     }
     if(isContain(messageText,'hola')){
         mensaje = 'Hola que gusto que estes aqui.'
-        //sendMessageTemplate(senderID);
+        sendMessageTemplate(senderID);
     }
     else if(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
@@ -72,7 +72,7 @@ function evaluarMensaje(senderID, messageText){
 
 
 
-/* function sendMessageTemplate(){
+function sendMessageTemplate(){
     var messageData = {
         recipient : {
             id: senderID
@@ -81,26 +81,21 @@ function evaluarMensaje(senderID, messageText){
             attachmen: {
                 type: "template",
                 payload: {
-                    template_type: "generic",
-                    elements: [elemenTemplate()]
+                    template_type: "button",
+                    text: "Hola que gusto que estes aqui",
+                    buttons: [
+                        {
+                            type: "web_url",
+                            url: "https://www.messenger.com",
+                            title: "Prueba"
+                        }
+                    ]
                 }
             }
         }
     }
-    
-} */
-
-/* function elemenTemplate(){
-    return{
-        buttons: [buttonTemplate()],
-    }
+    callSendAPI(messageData);
 }
-
-function buttonTemplate(){
-    return{
-        title: "Prueba"
-    }
-} */
 
 function enviarMensajeTexto(senderID, mensaje){
     var messageData = {
