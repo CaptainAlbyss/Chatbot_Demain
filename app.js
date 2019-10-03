@@ -72,7 +72,7 @@ function evaluarMensaje(senderID, messageText){
 
 
 
-function sendMessageTemplate(){
+/* function sendMessageTemplate(){
     var messageData = {
         recipient : {
             id: senderID
@@ -88,9 +88,9 @@ function sendMessageTemplate(){
         }
     }
     
-}
+} */
 
-function elemenTemplate(){
+/* function elemenTemplate(){
     return{
         buttons: [buttonTemplate()],
     }
@@ -100,7 +100,7 @@ function buttonTemplate(){
     return{
         title: "Prueba"
     }
-}
+} */
 
 function enviarMensajeTexto(senderID, mensaje){
     var messageData = {
