@@ -61,12 +61,44 @@ function evaluarMensaje(senderID, messageText){
         mensaje = 'De momento no hay informacion para proporcionarte.'
     }
     if(isContain(messageText,'hola')){
-        mensaje = 'Hola, Bienvenido a Demain Ideas.'
+        sendMessageTemplate(senderID);
     }
     else if(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
     }
     enviarMensajeTexto(senderID, mensaje)
+}
+
+
+
+function sendMessageTemplate(){
+    var messageData = {
+        recipient : {
+            id: senderID
+        },
+        message: {
+            attachmen: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [elemenTemplate()]
+                }
+            }
+        }
+    }
+    
+}
+
+function elemenTemplate(){
+    return{
+        buttons: [buttonTemplate()],
+    }
+}
+
+function buttonTemplate(){
+    return{
+        title: "Prueba"
+    }
 }
 
 function enviarMensajeTexto(senderID, mensaje){
@@ -101,11 +133,3 @@ function isContain(texto, word){
     return texto.indexOf(word) > -1
 }
 
-curl -X POST -H "Content-Type: application/json" -d '{
-    "recipient":{
-      "id":"<PSID>"
-    },
-    "message":{
-      "text":"hello, world!"
-    }
-  }' "https://graph.facebook.com/v4.0/me/messages?access_token=<APP_TOKEN>"
