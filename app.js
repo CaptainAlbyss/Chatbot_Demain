@@ -13,7 +13,7 @@ app.use(bodyParser.json())
 var PORT = process.env.PORT || 3000;
 
 app.listen(PORT,function(){
-    console.log('server escuchando en localhost: ' + PORT)
+    console.log('server escuchando en localhost y no se por que no esta funcionando jeje :3: ' + PORT)
 })
 
 //Rutas get y post
