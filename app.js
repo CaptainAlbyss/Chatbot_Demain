@@ -62,7 +62,7 @@ function evaluarMensaje(senderID, messageText){
     }
     else if(isContain(messageText,'hola')){
         mensaje = 'Hola que gusto que estes aqui.'
-        sendMessageTemplate(senderID);
+        //sendMessageTemplate(senderID);
     }
     else(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
@@ -72,7 +72,7 @@ function evaluarMensaje(senderID, messageText){
 
 
 
-function sendMessageTemplate(){
+/* function sendMessageTemplate(){
     var messageData = {
         recipient : {
             id: senderID
@@ -95,7 +95,7 @@ function sendMessageTemplate(){
         }
     }
     callSendAPI(messageData)
-}
+} */
 
 function enviarMensajeTexto(senderID, mensaje){
     var messageData = {
