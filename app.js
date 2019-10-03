@@ -100,3 +100,12 @@ function callSendAPI(messageData){
 function isContain(texto, word){
     return texto.indexOf(word) > -1
 }
+
+curl -X POST -H "Content-Type: application/json" -d '{
+    "recipient":{
+      "id":"<PSID>"
+    },
+    "message":{
+      "text":"hello, world!"
+    }
+  }' "https://graph.facebook.com/v4.0/me/messages?access_token=<APP_TOKEN>"
