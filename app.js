@@ -61,7 +61,7 @@ function evaluarMensaje(senderID, messageText){
     else if(isContain(messageText,'info')){
         mensaje = 'De momento no hay informacion para proporcionarte.'
     }
-    else if(isContain(messageText,'hola')){
+    if(isContain(messageText,'hola')){
         mensaje = 'Hola que gusto que estes aqui.'
         //sendMessageTemplate(senderID);
     }
