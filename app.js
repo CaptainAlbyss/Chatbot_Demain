@@ -18,7 +18,7 @@ app.listen(PORT,function(){
 
 //Rutas get y post
 app.get('/',function(req, res){
-    res.send('Abriendo el puerto desde PC local')
+    res.send('No se por que no esta funcionando jeje :3')
 })
 //ruta para verificar token de la webhook
 app.get('/webhook',function(req, res){
