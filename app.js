@@ -60,11 +60,11 @@ function evaluarMensaje(senderID, messageText){
     else if(isContain(messageText,'info')){
         mensaje = 'De momento no hay informacion para proporcionarte.'
     }
-    if(isContain(messageText,'hola')){
+    else if(isContain(messageText,'hola')){
         mensaje = 'Hola que gusto que estes aqui.'
         sendMessageTemplate(senderID);
     }
-    else if(isContain(messageText, 'adios')){
+    else(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
     }
     enviarMensajeTexto(senderID, mensaje)
@@ -94,7 +94,7 @@ function sendMessageTemplate(){
             }
         }
     }
-    callSendAPI(messageData);
+    callSendAPI(messageData)
 }
 
 function enviarMensajeTexto(senderID, mensaje){
