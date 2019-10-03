@@ -51,6 +51,7 @@ function getMessage(event){
 
     evaluarMensaje(senderID, messageText)
 }
+
 function evaluarMensaje(senderID, messageText){
     var mensaje = '';
     mensaje = 'Todavia no se que hacer con lo que me dices.'
@@ -64,7 +65,7 @@ function evaluarMensaje(senderID, messageText){
         mensaje = 'Hola que gusto que estes aqui.'
         //sendMessageTemplate(senderID);
     }
-    else(isContain(messageText, 'adios')){
+    else if(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
     }
     enviarMensajeTexto(senderID, mensaje)
