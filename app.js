@@ -54,7 +54,20 @@ function getMessage(event){
 
 function evaluarMensaje(senderID, messageText){
     var mensaje = '';
-    mensaje = 'Todavia no se que hacer con lo que me dices.'
+    switch (messageText){
+        case isContain(messageText,'Empezar'):
+            sendMessageTemplate(senderID);
+            break;
+        case isContain(messageText,'hola' || 'Hola'):
+            sendMessageTemplate(senderID);
+            break;
+        default:
+            mensaje = 'Todavia no se que hacer con lo que me dices.'
+            break;
+    }
+
+
+/*     mensaje = 'Todavia no se que hacer con lo que me dices.'
     if(isContain(messageText,'ayuda')){
         mensaje = 'Por el momento no puedo ayudarte.'
     }
@@ -67,28 +80,11 @@ function evaluarMensaje(senderID, messageText){
     }
     else if(isContain(messageText, 'adios')){
         mensaje = 'Adios.'
-    }
+    }*/
     enviarMensajeTexto(senderID, mensaje)
 }
 
-/* function sendMessageTemplate(senderID){
-    var messageData = {
-        recipient : {
-            id: senderID
-        },
-        message: {
-            attachment:{
-                type: "template",
-                payload:{
-                    template_type: "generic",
-                    elements : [elementTemplate()]
-                }
-            }
-        }
-    }
-    callSendAPI(messageData)
-}
- */
+
 
 
 function sendMessageTemplate(senderID){
