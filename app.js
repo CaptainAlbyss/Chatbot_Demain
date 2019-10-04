@@ -54,7 +54,7 @@ function getMessage(event){
 
 function evaluarMensaje(senderID, messageText){
     var mensaje = '';
-    switch (isContain(messageText)){
+    switch (messageText){
         case 'Empezar':
             sendMessageTemplate(senderID);
             break;
