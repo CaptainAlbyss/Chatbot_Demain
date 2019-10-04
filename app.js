@@ -54,11 +54,11 @@ function getMessage(event){
 
 function evaluarMensaje(senderID, messageText){
     var mensaje = '';
-    switch (messageText){
-        case isContain('Empezar'):
+    switch (isContain(messageText)){
+        case 'Empezar':
             sendMessageTemplate(senderID);
             break;
-        case isContain('hola' || 'Hola'):
+        case 'hola' || 'Hola':
             sendMessageTemplate(senderID);
             break;
         default:
