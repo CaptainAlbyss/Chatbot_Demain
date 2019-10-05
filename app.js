@@ -16,11 +16,11 @@ app.listen(PORT,function(){
     console.log('server escuchando en localhost y no se por que no esta funcionando jeje :3: ' + PORT)
 })
 
-//Rutas get y post
+//Rutas get y post se ve en la web http
 app.get('/',function(req, res){
     res.send('No se por que no esta funcionando jeje :3')
 })
-//ruta para verificar token de la webhook
+//ruta para verificar token de la webhook en el facebook developer
 app.get('/webhook',function(req, res){
     if(req.query['hub.verify_token'] == 'Prueba_Demain'){
         res.send(req.query['hub.challenge'])
@@ -29,6 +29,7 @@ app.get('/webhook',function(req, res){
     }
 })
 
+//obtener el evento de mensaje por webhook (Necesario)
 app.post('/webhook',function(req, res){
     var data = req.body
     if(data.object == 'page'){
@@ -45,42 +46,21 @@ app.post('/webhook',function(req, res){
     res.sendStatus(200)
 })
 
+//Obtiene el mensaje enviado por el usuario en facebook
 function getMessage(event){
     var senderID = event.sender.id
     var messageText = event.message.text
 
     evaluarMensaje(senderID, messageText)
 }
-
+//Toma lo que lleva por dentro el mensaje del usuario y lo evalua para saber que responder
 function evaluarMensaje(senderID, messageText){
     var mensaje = '';
-    switch (messageText){
-        case 'Empezar':
-            sendMessageTemplate(senderID);
-            break;
-        case 'hola' || 'Hola':
-            sendMessageTemplate(senderID);
-            break;
-        default:
-            mensaje = 'Todavia no se que hacer con lo que me dices.'
-            break;
-    }
+    mensaje = 'Todavia no se que hacer con lo que me dices.'
 
-
-/*     mensaje = 'Todavia no se que hacer con lo que me dices.'
     if(isContain(messageText,'ayuda')){
         mensaje = 'Por el momento no puedo ayudarte.'
     }
-    else if(isContain(messageText,'info')){
-        mensaje = 'De momento no hay informacion para proporcionarte.'
-    }
-    if(isContain(messageText,'hola')){
-        mensaje = 'Hola que gusto que estes aqui.'
-        sendMessageTemplate(senderID);
-    }
-    else if(isContain(messageText, 'adios')){
-        mensaje = 'Adios.'
-    }*/
     enviarMensajeTexto(senderID, mensaje)
 }
 
@@ -100,9 +80,14 @@ function sendMessageTemplate(senderID){
                     text: "Hola que gusto que estes aqui",
                     buttons: [
                         {
-                            type: "web_url",
-                            url: "https://www.messenger.com",
-                            title: "Prueba"
+                            type: "postback",
+                            title: "Contar sobre problema en mi entorno",
+                            payload: "Contar"
+                        },
+                        {
+                            type: "postback",
+                            title: "Quiero saber mas sobre Demain",
+                            payload: "Saber"
                         }
                     ],
                 }
@@ -111,6 +96,8 @@ function sendMessageTemplate(senderID){
     }
     callSendAPI(messageData)
 }
+
+//Envia el mensaje al usuario en texto
 
 function enviarMensajeTexto(senderID, mensaje){
     var messageData = {
@@ -124,6 +111,8 @@ function enviarMensajeTexto(senderID, mensaje){
     callSendAPI(messageData)
 }
 
+
+//funcion con metodo POST para enviar el mensaje al usuario (total necesario)
 function callSendAPI(messageData){
     //API de facebook
     request({
@@ -140,6 +129,8 @@ function callSendAPI(messageData){
     })
 }
 
+
+//Funcion para evaluar si el mensaje del usuario contiene una palabra en especifico
 function isContain(texto, word){
     return texto.indexOf(word) > -1
 }
