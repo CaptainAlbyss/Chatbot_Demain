@@ -65,38 +65,37 @@ function evaluarMensaje(senderID, messageText){
     enviarMensajeTexto(senderID, mensaje)
 }
 
-
-
 function sendMessageTemplate(senderID){
     var messageData = {
         recipient : {
             id: senderID
         },
         message: {
-            persistent_menu: [
-                {
-                    locale: "default",
-                    composer_input_disabled: false,
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "button",
+                    text: "Hola que gusto que estes aqui",
                     call_to_actions: [
+                        
                         {
                             type: "postback",
-                            title: "Contar Problema",
+                            title: "Contar sobre problema en mi entorno",
                             payload: "Contar"
                         },
                         {
                             type: "postback",
-                            title: "Saber mas...",
-                            payload: "Saber mas"
+                            title: "Quiero saber mas sobre Demain",
+                            payload: "Saber"
                         }
-                    ]
-                }    
-            ],
+                    ],
+                }
+            }
         }
     }
     callSendAPI(messageData)
 }
 
-    
 
 /* function sendMessageTemplate(senderID){
     var messageData = {
@@ -110,6 +109,7 @@ function sendMessageTemplate(senderID){
                     template_type: "button",
                     text: "Hola que gusto que estes aqui",
                     buttons: [
+                        
                         {
                             type: "postback",
                             title: "Contar sobre problema en mi entorno",
