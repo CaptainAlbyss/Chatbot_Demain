@@ -58,8 +58,9 @@ function evaluarMensaje(senderID, messageText){
     var mensaje = '';
     mensaje = 'Todavia no se que hacer con lo que me dices.'
 
-    if(isContain(messageText,'ayuda')){
-        mensaje = 'Por el momento no puedo ayudarte.'
+    if(isContain(messageText,'hola' || 'Hola')){
+        sendMessageTemplate(senderID);
+//        mensaje = 'Por el momento no puedo ayudarte.'
     }
     enviarMensajeTexto(senderID, mensaje)
 }
