@@ -73,35 +73,31 @@ function sendMessageTemplate(senderID){
             id: senderID
         },
         message: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "button",
-                    text: "Hola que gusto que estes aqui",
-                    persistent_menu: [
+            persistent_menu: [
+                {
+                    locale: "default",
+                    composer_input_disabled: false,
+                    call_to_actions: [
                         {
-                            locale: "default",
-                            composer_input_disabled: false,
-                            call_to_actions: [
-                                {
-                                    type: "postback",
-                                    title: "Contar Problema",
-                                    payload: "Contar"
-                                },
-                                {
-                                    type: "postback",
-                                    title: "Saber mas...",
-                                    payload: "Saber mas"
-                                }
-                            ]
-                        }    
-                    ],
-                }
-            }
+                            type: "postback",
+                            title: "Contar Problema",
+                            payload: "Contar"
+                        },
+                        {
+                            type: "postback",
+                            title: "Saber mas...",
+                            payload: "Saber mas"
+                        }
+                    ]
+                }    
+            ],
         }
     }
     callSendAPI(messageData)
 }
+
+    
+
 /* function sendMessageTemplate(senderID){
     var messageData = {
         recipient : {
